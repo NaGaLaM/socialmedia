@@ -1,0 +1,111 @@
+.register {
+  height: 100vh;
+  background: rgb(209, 95, 237);
+  background: linear-gradient(90deg, rgba(209, 95, 237, 1) 0%, rgba(153, 153, 240, 0.6446953781512605) 27%, rgba(52, 127, 255, 1) 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  .card {
+    width: 50%;
+    display: flex;
+    flex-direction: row-reverse;
+    background-color: white;
+    border-radius: 10px;
+    min-height: 600px;
+    overflow: hidden;
+
+    .left {
+      flex: 1;
+      background: linear-gradient(rgba(39, 11, 96, 0.5), rgba(39, 11, 96, 0.5)),
+        url("../../../src/assets/bgr.jpg") center;
+      background-size: cover;
+      padding: 50px;
+      display: flex;
+      flex-direction: column;
+      gap: 30px;
+      color: white;
+
+      h1 {
+        font-size: 100px;
+        line-height: 100px;
+      }
+
+      p {}
+
+      span {
+        font-size: 14px;
+      }
+
+      button {
+        text-decoration: none;
+        width: 50%;
+        padding: 10px;
+        border: none;
+        background-color: white;
+        color: rebeccapurple;
+        font-weight: bold;
+        cursor: pointer;
+        border-radius: 20px;
+      }
+    }
+
+    .right {
+      flex: 1;
+      padding: 50px;
+      display: flex;
+      flex-direction: column;
+      gap: 50px;
+      justify-content: center;
+
+      h1 {
+        color: #555;
+      }
+
+      form {
+        display: flex;
+        flex-direction: column;
+        gap: 30px;
+
+        input {
+          border: none;
+          border-bottom: 1px solid lightgray;
+          padding: 20px 10px;
+        }
+
+        button {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          gap: 10px;
+          font-family: inherit;
+          font-size: 13px;
+          font-weight: 500;
+          text-transform: uppercase;
+          letter-spacing: 0.4px;
+          color: rgb(255, 255, 255);
+          background-color: #9fccf8;
+          border-style: solid;
+          border-width: 2px 2px 2px 2px;
+          border-color: rgba(255, 255, 255, 0.333);
+          border-radius: 40px 40px 40px 40px;
+          padding: 16px 24px 16px 28px;
+          transform: translate(0px, 0px) rotate(0deg);
+          transition: 0.9s;
+          box-shadow: -4px -2px 16px 0px #ffffff, 4px 2px 16px 0px rgb(95 157 231 / 48%);
+        }
+
+        button:hover {
+          color: #ffffff;
+          background-color: #e6d5d5;
+          box-shadow: -2px -1px 8px 0px #ffffff, 2px 1px 8px 0px rgb(95 157 231 / 48%);
+          cursor: pointer;
+        }
+
+        button:active {
+          box-shadow: none;
+        }
+      }
+    }
+  }
+}
