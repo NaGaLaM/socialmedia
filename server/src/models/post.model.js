@@ -30,14 +30,20 @@ class PostModel extends Model {
         this.updated_at = new Date();
     }
 
-    static async getPostById(userId) {
-        return PostModel.query()
-            .select('*')
-            .where({ userId })
-            .orderBy('created_at');
+    static async getPostById(userId, offset) {
+        const data = await PostModel.query()
+            .where({userId})
+            .withGraphFetched('user')
+            .modifyGraph('user', (table) => {
+                table.select('name', 'surname', 'profilePic');
+            })
+            .orderBy('created_at', 'desc')
+            .offset(offset)
+            .limit(10);
+        return data;
     }
 
-    static async getTimeLine(userId) {
+    static async getTimeLine(userId,offset) {
         const id = await AuthModel.query()
             .select('id')
             .whereRaw('? = ANY(followings)', [userId])
@@ -49,6 +55,9 @@ class PostModel extends Model {
             .modifyGraph('user', (table) => {
                 table.select('name', 'surname', 'profilePic');
             })
+            .orderBy('created_at','desc')
+            .offset(offset)
+            .limit(10);
         return data;
     }
 

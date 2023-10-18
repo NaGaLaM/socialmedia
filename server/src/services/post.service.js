@@ -2,12 +2,12 @@ const PostModel = require('../models/post.model.js');
 
 class PostService {
 
-    static async getPostById(id) {
-        return PostModel.getPostById(id);
+    static async getPostById(id,offset) {
+        return PostModel.getPostById(id,offset);
     }
 
-    static async getTimeLine (id) {
-        return PostModel.getTimeLine (id);
+    static async getTimeLine (id,offset) {
+        return PostModel.getTimeLine (id,offset);
     }
 
     static async addPost(data) {

@@ -54,10 +54,12 @@ const Navbar = () => {
         <EmailOutlinedIcon />
         <NotificationsOutlinedIcon />
         <div className="user">
+          <Link to="/" style={{ textDecoration: "none" }}>
           <img
             src={"http://localhost:5000/images/person/" + currentUser.profilePic}
             alt=""
-          />
+            />
+            </Link>
         </div>
         <button class="Btn" onClick={logout}>
 

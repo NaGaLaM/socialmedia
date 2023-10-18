@@ -4,8 +4,12 @@ class PostController {
 
     static async getPostById(req, res, next) {
         try {
-            const { userId } = req.query;
-            const data = await PostService.getPostById(userId);
+            var { userId, offset } = req.query;
+            offset = Number(offset);
+            if (!offset) {
+                offset = 0
+            }
+            const data = await PostService.getPostById(userId,offset);
             res.send(data);
         } catch (error) {
             console.log(error);
@@ -14,9 +18,13 @@ class PostController {
 
     static async getTimeLine(req, res, next) {
         try {
-            const { userId } = req.query;
-            const data = await PostService.getTimeLine(userId);
-            res.send(data)
+            var { userId,offset } = req.query;
+            offset = Number(offset);
+            if(!offset){
+                offset = 0
+            }
+            const data = await PostService.getTimeLine(userId,offset);
+            res.send(data);
         } catch (error) {
             console.log(error);
         }
