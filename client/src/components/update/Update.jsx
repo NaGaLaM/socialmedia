@@ -5,6 +5,7 @@ import { useMutation, useQueryClient } from "@tanstack/react-query";
 import CloudUploadIcon from "@mui/icons-material/CloudUpload";
 
 const Update = ({ setOpenUpdate, user }) => {
+  console.log(user);
   const [cover, setCover] = useState(null);
   const [profile, setProfile] = useState(null);
   const [texts, setTexts] = useState({
@@ -14,7 +15,6 @@ const Update = ({ setOpenUpdate, user }) => {
     city: user.city,
     website: user.website,
   });
-
   const upload = async (file) => {
     console.log(file)
     try {
@@ -56,7 +56,7 @@ const Update = ({ setOpenUpdate, user }) => {
     profileUrl = profile ? await upload(profile) : user.profilePic;
 
     mutation.mutate({ ...texts, coverPic: coverUrl, profilePic: profileUrl });
-    setOpenUpdate(false);
+    // setOpenUpdate(false);
     setCover(null);
     setProfile(null);
 

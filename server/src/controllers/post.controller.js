@@ -6,6 +6,7 @@ class PostController {
         try {
             var { userId, offset } = req.query;
             offset = Number(offset);
+            userId = Number(userId)
             if (!offset) {
                 offset = 0
             }
@@ -15,7 +16,7 @@ class PostController {
             console.log(error);
         }
     }
-
+    
     static async getTimeLine(req, res, next) {
         try {
             var { userId,offset } = req.query;

@@ -26,6 +26,17 @@ class AuthService {
         }
     }
 
+    static async online(id) {
+       const data = await AuthModel.online(id);
+       console.log(data);
+       const users = data.map(a=>a=a.id);
+       return users;
+    }
+
+    static async offline(id) {
+        return AuthModel.offline(id);
+    }
+
 }
 
 module.exports = AuthService;

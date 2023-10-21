@@ -45,7 +45,8 @@
     padding-inline: 0.8em;
     border-radius: var(--border-radius);
     transition: border-radius 0.5s ease;
-    background: themed("bg");
+    background: themed('srch_bg');
+    border-color: #e1e1e1;
   }
 
   /* styling of Input */
@@ -58,6 +59,9 @@
     padding-inline: 0.5em;
     padding-block: 0.7em;
     border: none;
+  }
+  .input::placeholder{
+    color: themed('textColor');
   }
 
   /* styling of animated border */

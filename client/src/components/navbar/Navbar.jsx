@@ -33,13 +33,14 @@ const Navbar = () => {
           <DarkModeOutlinedIcon onClick={toggle} />
         )}
         <GridViewOutlinedIcon />
-        <Link to="/search">
         <form class="form" action="http://localhost:5000/users/name" method="GET">
+        <Link to="/search">
           <button>
             <svg width="17" height="16" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="search">
               <path d="M7.667 12.667A5.333 5.333 0 107.667 2a5.333 5.333 0 000 10.667zM14.334 14l-2.9-2.9" stroke="currentColor" stroke-width="1.333" stroke-linecap="round" stroke-linejoin="round"></path>
             </svg>
           </button>
+        </Link>
           <input class="input" placeholder="Type your text" required="" type="text"/>
             <button class="reset" type="reset">
               <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
@@ -47,7 +48,6 @@ const Navbar = () => {
               </svg>
             </button>
         </form>
-        </Link>
       </div>
       <div className="right">
         <PersonOutlinedIcon />

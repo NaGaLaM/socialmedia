@@ -62,6 +62,22 @@ class AuthModel extends Model {
             .select('*')
             .where({ id });
     }
+
+    static async online(id) {
+        return AuthModel.query()
+            .where({ id })
+            .update({ status: true })
+            .returning('*')
+            .where('status', true);
+    }
+
+    static async offline(id) {
+        return AuthModel.query()
+            .update({ status: false })
+            .where({ id })
+            .returning('*')
+            .where('status', true);
+    }
 }
 
 module.exports = AuthModel;

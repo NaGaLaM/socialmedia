@@ -1,6 +1,7 @@
 import "./rightBar.scss";
 
-const RightBar = () => {
+const RightBar = (users) => {
+  console.log(users.users);
   return (
     <div className="rightBar">
       <div className="container">

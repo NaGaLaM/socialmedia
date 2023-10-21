@@ -20,6 +20,7 @@ async function up(pg) {
             table.string('city');
             table.string('from');
             table.specificType('relationship', 'text[]').defaultTo('{}');
+            table.boolean('status').defaultTo(false);
             table.dateTime('created_at');
             table.dateTime('updated_at');
         })

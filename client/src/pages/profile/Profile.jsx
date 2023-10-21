@@ -25,6 +25,7 @@ const Profile = () => {
 
   const { isLoading, data } = useQuery(["user"], () =>
     makeRequest.get("/users/find/" + userId).then((res) => {
+      console.log(res.data);
       return res.data;
     })
   );
@@ -64,26 +65,34 @@ const Profile = () => {
         <>
           <div className="images">
             <img src={"http://localhost:5000/images/person/" + data.coverPic} alt="" className="cover" />
-              <img src={"http://localhost:5000/images/person/" + data.profilePic} alt="" className="profilePic" />
+            <img src={"http://localhost:5000/images/person/" + data.profilePic} alt="" className="profilePic" />
           </div>
           <div className="profileContainer">
             <div className="uInfo">
-              <div className="left">
-                <a href="http://facebook.com">
+              <div className="left">{
+                data.fb ? <a href="http://facebook.com">
                   <FacebookTwoToneIcon fontSize="large" />
-                </a>
-                <a href="http://facebook.com">
-                  <InstagramIcon fontSize="large" />
-                </a>
-                <a href="http://facebook.com">
-                  <TwitterIcon fontSize="large" />
-                </a>
-                <a href="http://facebook.com">
-                  <LinkedInIcon fontSize="large" />
-                </a>
-                <a href="http://facebook.com">
-                  <PinterestIcon fontSize="large" />
-                </a>
+                </a> : false}
+                {data.instagram ?
+                  < a href="http://facebook.com">
+                    <InstagramIcon fontSize="large" />
+                  </a> : false}
+                {data.x ?
+                  <a href="http://facebook.com">
+                    <TwitterIcon fontSize="large" />
+                  </a>
+                  : false
+                }
+                {data.linkedId ?
+                  <a href="http://facebook.com">
+                    <LinkedInIcon fontSize="large" />
+                  </a> : false
+                }
+                {data.pinterest ?
+                  <a href="http://facebook.com">
+                    <PinterestIcon fontSize="large" />
+                  </a> : false
+                }
               </div>
               <div className="center">
                 <span>{data.name}</span>
@@ -114,12 +123,15 @@ const Profile = () => {
                 <MoreVertIcon />
               </div>
             </div>
+            <div>
             <Posts userId={userId} />
+            </div>
           </div>
         </>
-      )}
-      {openUpdate && <Update setOpenUpdate={setOpenUpdate} user={data} />}
-    </div>
+      )
+      }
+      {<Update setOpenUpdate={setOpenUpdate} user={currentUser} />}
+    </div >
   );
 };
 

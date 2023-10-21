@@ -19,15 +19,15 @@ const Posts = ({ userId }) => {
   );
 
   const fetchData = () => {
-      if(data.length>length && data.length>=10){
-        makeRequest.get(`/posts/timeline?userId=${currentUser.id}&offset=${data?.length}`).then((res) => {
-          setData(data => [...data, ...res.data])
-          setLength(data.length);
-          return res.data;
-        })
-      }
+    if (data.length > length && data.length >= 10) {
+      makeRequest.get(`/posts/timeline?userId=${currentUser.id}&offset=${data?.length}`).then((res) => {
+        setData(data => [...data, ...res.data])
+        setLength(data.length);
+        return res.data;
+      })
     }
-  
+  }
+
 
   const handleScroll = () => {
     if ((window.innerHeight + window.scrollY) >= document.body.scrollHeight - 100 && !isLoading) {
@@ -48,7 +48,7 @@ const Posts = ({ userId }) => {
         ? "Something went wrong!"
         : isLoading
           ? "loading"
-          :data.map((post) => <Post post={post} key={post.id}/>)}
+          : data.map((post) => <Post post={post} key={post.id} />)}
     </div>
   );
 };

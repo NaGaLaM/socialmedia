@@ -8,7 +8,7 @@ class AuthController {
             const { surname, password, email, name } = req.body;
             const user = await AuthService.register({ surname, password, email, name });
             if (user.error) {
-                res.send({error:user.error});
+                res.send({ error: user.error });
             } else {
                 console.log(`user created successfully!`);
                 res.send(user);
@@ -22,15 +22,16 @@ class AuthController {
         try {
             const { email, password } = req.body;
             const data = await AuthService.login({ email, password });
-            if(data.error){
+            if (data.error) {
                 res.send(data.error);
-            }else{
+            } else {
                 res.send(data);
             }
         } catch (error) {
-            
+
         }
     }
+
 
 }
 

@@ -7,8 +7,8 @@ $themes: (
     border: lightgray,
     btn_color: #f3f3f3,
     second_color:#2e2e2e,
-    name:#2e2e2e
-  ),
+    name:#2e2e2e,
+    srch_bg:rgba(160, 160, 160, 0.075)),
   dark: (textColor: whitesmoke,
     bg: #222,
     logo: white,
@@ -17,8 +17,8 @@ $themes: (
     border: #444,
     btn_color: #2e2e2e,
     second_color:#f3f3f3,
-    name:white
-  ),
+    name:white,
+    srch_bg:rgba(0, 0, 0, 0.274)),  
 );
 
 @mixin themify($themes) {

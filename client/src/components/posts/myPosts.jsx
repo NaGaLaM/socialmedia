@@ -2,16 +2,14 @@ import Post from "../post/Post";
 import "./posts.scss";
 import { useQuery } from "@tanstack/react-query";
 import { makeRequest } from "../../axios";
-import { useContext, useEffect, useState } from "react";
-import { AuthContext } from "../../context/authContext";
+import { useEffect, useState } from "react";
 
 
 const Posts = ({ userId }) => {
     const [data, setData] = useState([]);
     const [length, setLength] = useState(false);
-    const { currentUser } = useContext(AuthContext);
     const { isLoading, error } = useQuery(["posts"], () =>
-        makeRequest.get(`/posts/mytimeline?userId=${currentUser.id}`).then((res) => {
+        makeRequest.get(`/posts/mytimeline?userId=${userId}`).then((res) => {
             setData(res.data);
             setLength(data.length);
             return res.data;
@@ -20,7 +18,7 @@ const Posts = ({ userId }) => {
 
     const fetchData = () => {
         if (data.length > length && data.length >= 10) {
-            makeRequest.get(`/posts/mytimeline?userId=${currentUser.id}&offset=${data?.length}`).then((res) => {
+            makeRequest.get(`/posts/mytimeline?userId=${userId}&offset=${data?.length}`).then((res) => {
                 setData(data => [...data, ...res.data])
                 setLength(data.length);
                 return res.data;
@@ -47,8 +45,8 @@ const Posts = ({ userId }) => {
             {error
                 ? "Something went wrong!"
                 : isLoading
-                    ? "loading"
-                    : data.map((post) => <Post post={post} key={post.id} />)}
+                    ? "loading" :
+                    data.map((post) => <Post post={post} key={post.id} />)}
         </div>
     );
 };
